@@ -3,12 +3,8 @@ const Store = require('../lib/store');
 
 describe('tests methods on Store class', () => {
     
-    let store;
-    let object = { name: 'Jack' };
-
-    beforeEach(() => {
-        store = new Store();        
-    });
+    const store = new Store;
+    const object = { name: 'Jack' };
 
     it('save saves to store', () => {
         const savedObject = store.save(object);
