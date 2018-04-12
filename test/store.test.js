@@ -6,10 +6,16 @@ describe('tests methods on Store class', () => {
     const store = new Store;
     const object = { name: 'Jack' };
 
-    it('save saves to store', () => {
+    it('saves to store', () => {
         const savedObject = store.save(object);
         assert.ok(savedObject._id);
         assert.equal(savedObject.name, 'Jack');
+    });
+
+    it('returns an object with the given id', () => {
+        const savedObj = store.save({ name: 'Jacob' });
+        const returnedObj = store.get(savedObj._id);
+        assert.deepEqual(returnedObj, savedObj);
     });
 
 });
