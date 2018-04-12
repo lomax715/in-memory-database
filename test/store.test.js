@@ -5,6 +5,7 @@ describe('tests methods on Store class', () => {
     
     const store = new Store;
     const object = { name: 'Jack' };
+    const object2 = { name: 'Jacob' };
 
     it('saves to store', () => {
         const savedObject = store.save(object);
@@ -13,7 +14,7 @@ describe('tests methods on Store class', () => {
     });
 
     it('returns an object with the given id', () => {
-        const savedObj = store.save({ name: 'Jacob' });
+        const savedObj = store.save(object2);
         const returnedObj = store.get(savedObj._id);
         assert.deepEqual(returnedObj, savedObj);
     });
@@ -25,7 +26,7 @@ describe('tests methods on Store class', () => {
 
     it('returns all objects in store', () => {
         const database = store.getAll();
-        assert.deepEqual(database, store.database);
+        assert.deepEqual(database, [object, object2]);
     });
 
 });
