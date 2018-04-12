@@ -18,4 +18,14 @@ describe('tests methods on Store class', () => {
         assert.deepEqual(returnedObj, savedObj);
     });
 
+    it('returns null if id not in store', () => {
+        const nullObject = store.get();
+        assert.deepEqual(nullObject, null);
+    });
+
+    it('returns all objects in store', () => {
+        const database = store.getAll();
+        assert.deepEqual(database, store.database);
+    });
+
 });
