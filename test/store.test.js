@@ -29,13 +29,17 @@ describe('tests methods on Store class', () => {
         assert.deepEqual(database, [object, object2]);
     });
 
-    it('remove value true if object removed', () => {
+    it('remove with value true if object removed', () => {
         const savedobject = store.save(object);
         store.save(object2); 
         const removed = store.remove(savedobject._id);
         assert.deepEqual(removed, { removed: true });
     });
 
-
-
+    it('remove with value false if no match', () => {
+        store.save(object);
+        store.save(object2);
+        const removedFalse = store.remove(2);
+        assert.deepEqual(removedFalse, { removed: false });
+    });
 });
